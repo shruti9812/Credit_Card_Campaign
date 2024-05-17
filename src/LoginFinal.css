@@ -1,0 +1,198 @@
+section {
+  position: relative;
+  min-height: 100vh;
+  background-color: #494848;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+section .R-container {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  background: black;
+  box-shadow: 0 2px 16px 1px rgb(238, 251, 174);
+  overflow: hidden;
+}
+
+section .R-container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+section .R-container .user .imgBx {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ff0;
+  transition: 0.5s;
+}
+
+section .R-container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .R-container .user .formBx {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+}
+
+section .R-container .user .formBx form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-right: 32px;
+  color: #555;
+  white-space: nowrap;
+  max-width: max-content; /* Set your desired maximum width */
+  text-overflow: ellipsis;
+  margin-top: 40px;
+}
+
+
+section .R-container .user .formBx form input[type="submit"] {
+  max-width: 100px;
+  background: #fbff0e;
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  margin-bottom: 100px;
+}
+
+section .R-container .user .formBx form .signup {
+  position: relative;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.success {
+  min-width: 50px;
+  min-height: 30px;
+  color: #666;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color:#e1f1cf;
+  -webkit-box-shadow:inset 3px 0 0 #bcdf94;
+  box-shadow:inset 3px 0 0 #bcdf94
+}
+
+section .R-container .signupBx {
+  pointer-events: none;
+}
+
+section .R-container.active .signupBx {
+  pointer-events: initial;
+}
+
+section .R-container .signupBx .formBx {
+  left: 100%;
+}
+
+section .R-container.active .signupBx .formBx {
+  left: 0;
+}
+
+section .R-container .signupBx .imgBx {
+  left: -100%;
+}
+
+section .R-container.active .signupBx .imgBx {
+  left: 0%;
+}
+
+section .R-container .signinBx .formBx {
+  left: 0%;
+}
+
+section .R-container.active .signinBx .formBx {
+  left: 100%;
+}
+
+section .R-container .signinBx .imgBx {
+  left: 0%;
+}
+
+section .R-container.active .signinBx .imgBx {
+  left: -100%;
+}
+
+section .error {
+  color: red;
+  font-size: small;
+}
+
+section .R-container .user .formBx form input {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+
+.BackButton {
+  display: flex;
+  position: absolute;
+  top: 32px;
+  white-space: nowrap;
+  align-items: center;
+  color: black;
+  background: #fbff0e;
+  border: none;
+  padding: 0 20px;
+  text-transform: capitalize;
+  height: 40px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+@media (max-width: 991px) {
+  section .R-container {
+    max-width: 400px;
+  }
+
+  section .R-container .imgBx {
+    display: none;
+  }
+
+  section .R-container .user .formBx {
+    width: 100%;
+  }
+}

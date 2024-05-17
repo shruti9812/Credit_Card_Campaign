@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .top-header {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center; /* Move buttons to the right */
+    gap: 10px; /* Add some space between buttons */
+  }
+  
+  .banner-container {
+    text-align: center;
+  }
+  
+  .banner-image {
+    height: 300px; /* Adjust the height of the credit card image */
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,150 @@
+ .App {
+  font-family: sans-serif;
+  text-align: center;
+}
+/* HomePage.css */
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.header {
+  background-color: #000;
+  color: #fbff0e; /* Yellow */
+ 
+} 
+
+
+
+.logo {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  justify-content: flex-start;
+}
+
+
+.user-icon-container {
+  cursor: pointer;
+  
+}
+
+.user-icon {
+  height: 70px;
+  color: yellow;
+ margin-left: 15px;
+}
+.user-Manual
+{
+height: 70px;
+padding-left: 650px;
+}
+
+
+/* .auth-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+ 
+} */
+
+.auth-button {
+  background: #000;
+  background-color: #fbff0e;; /* Yellow */
+  border: 1px;
+  
+  padding: 15px 25px; /* Adjust padding for bigger size */
+  cursor: pointer;
+  font-size: 15px; /* Increase font size */
+}
+.action-button + .action-button {
+  margin-left: 10px;
+  margin-right: 10px;
+ 
+  
+}
+
+.auth-buttons button:hover {
+  background-color: #ffea7f; /* Lighter Yellow */
+}
+
+.navigation-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically align items */
+}
+
+.navigation-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-menu ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.navigation-menu ul li a {
+  color: #fbff0e;; /* Yellow */
+  text-decoration: none;
+}
+
+.navigation-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  text-align: center; 
+  padding: auto;
+}
+
+.title {
+  color: #000;
+}
+
+.banner-container {
+  width: 100%;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #fbff0e; /* Yellow */
+  color: #000;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: #ffea7f; /* Lighter Yellow */
+}
+
+.featured-services {
+  margin-top: 40px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.service-item img {
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 20px;
+}
+
+.footer {
+  background-color: #000;
+  color: #fbff0e; /* Yellow */
+  padding: 20px;
+  text-align: center;
+} 

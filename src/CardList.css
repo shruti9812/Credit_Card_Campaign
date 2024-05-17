@@ -1,0 +1,47 @@
+.card-list-container {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    overflow: hidden
+  }
+  
+  .Card-list-heading {
+  
+  background-color: #000;
+  color: #fbff0e;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-section {
+    margin-top: 30px;
+  }
+  
+  .card-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .card-item span {
+    margin-right: 20px;
+  }
+
+  .Card-Back-Button {
+    display: flex;
+    position: absolute;
+    top: 32px;
+    white-space: nowrap;
+    align-items: center;
+    color: black;
+    background: #fbff0e;
+    border: none;
+    padding: 0 20px;
+    text-transform: capitalize;
+    height: 40px;
+    cursor: pointer;
+    font-size: 10px;
+  }
+  

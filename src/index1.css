@@ -1,0 +1,58 @@
+/* index.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.id-card {
+  width: 300px;
+  margin: 50px auto;
+  border: 2px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.id-header {
+  background-color: #000;
+  color: #ffc20e;
+  padding: 10px;
+  text-align: center;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.id-body {
+  padding: 20px;
+}
+
+.employee-image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.employee-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.detail {
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  color: #000;
+}
+
+.value {
+  margin-left: 10px;
+  color: #000;
+}
