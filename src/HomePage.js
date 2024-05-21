@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';//
 import './Page.css';
 import logo from './EYLogo.jpg';
 import bannerImage from './creditcards.jpg';
 import userIcon from './User.jpg';
 import UserManual from './UserManual.jpg';
-
-const HomePage = ({ navigateTo }) => {
+ 
+const HomePage = ({  }) => {
+  const navigate = useNavigate();//
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [userData, setUserData] = useState(null);
-
+ 
   const handleUserIconClick = async () => {
     try {
       // Simulated fetch user details from MySQL database
@@ -20,11 +22,11 @@ const HomePage = ({ navigateTo }) => {
       console.error("Error fetching user details:", error);
     }
   };
-
+ 
   const handleCloseButtonClick = () => {
     setShowUserDetails(false);
   };
-
+ 
   return (
     <div className="container">
       <header className="header">
@@ -50,7 +52,7 @@ const HomePage = ({ navigateTo }) => {
           </div>
         </div>
       </header>
-
+ 
       <main className="main-content">
         <div className="content-container">
           <h2 className="heading h1">
@@ -68,12 +70,12 @@ const HomePage = ({ navigateTo }) => {
           </h2>
         </div>
         <div className="action-buttons">
-          <button className="go-home" onClick={() => navigateTo('login')}>
+          <button className="go-home" onClick={() => navigate('/login')}>
             View Campaign
           </button>
           <button
             className="go-home"
-            onClick={() => navigateTo('Create_Campaign')}
+            onClick={() => navigate('/Create_Campaign')}
           >
             Create Campaign
           </button>
@@ -90,7 +92,7 @@ const HomePage = ({ navigateTo }) => {
         </div>
         <p>&copy; 2024 Silverline Savings Bank. All rights reserved.</p>
       </footer>
-
+ 
       {/* User Details Popup */}
       {showUserDetails && (
         <div className="user-details-popup">
@@ -114,5 +116,5 @@ const HomePage = ({ navigateTo }) => {
     </div>
   );
 };
-
+ 
 export default HomePage;

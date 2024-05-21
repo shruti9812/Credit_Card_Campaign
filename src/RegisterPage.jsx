@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import axios from 'axios';
 import "./RegisterFinal.css";
+import { useNavigate } from 'react-router-dom';//
 
-const Register = ({navigateTo}) => {
+const Register = ({ }) => {
+  const navigate = useNavigate();//
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    // confirmPassword: "",
     employeeId: "",
     position: "",
   });
@@ -96,8 +98,8 @@ const Register = ({navigateTo}) => {
   };
 
   const handleBack = () => {
-    // Redirect to the home page
-    window.location.href = "/home";
+    // Redirect to the Landing page
+    navigate('/')
   };
 
   return (
@@ -194,7 +196,7 @@ const Register = ({navigateTo}) => {
                 value='Register'
                 onClick={handleSubmit}
               />
-              {(submitted && <h6>You have been succesfully registered! Please Login <button className="error" onClick={() => navigateTo('login')}>Login</button></h6>)
+              {(submitted && <h6>You have been succesfully registered! Please Login <button className="error" onClick={() => navigate('/login')}>Login</button></h6>)
               
             } 
             </form>

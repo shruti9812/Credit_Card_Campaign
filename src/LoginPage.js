@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';//
 import { IoArrowBack } from "react-icons/io5";
 import './LoginFinal.css';
 import axios from 'axios';
 
 
-const Login = ({ navigateTo }) => {
+const Login = ({  }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -15,7 +17,8 @@ const Login = ({ navigateTo }) => {
 
   const handleBack = () => {
     // Redirect to the Landing page
-    window.location.href = '/Landing';
+    
+    navigate('/')
   };
 
   const handleChange = (e) => {
@@ -32,7 +35,7 @@ const Login = ({ navigateTo }) => {
       const response = await axios.post('http://localhost:8000/login/', formData);
       console.log('login successfull');
       console.log('Response:', response.data);  
-      //navigate("/hello")    
+      window.location.href = '/home';
       } catch (error) {
       console.error('Error:', error);
       }
@@ -53,7 +56,7 @@ const Login = ({ navigateTo }) => {
         // Simulate authentication API call
         // Replace this with your actual authentication logic
         // For demonstration, assuming successful login if username is "user" and password is "password"
-        if (formData.username === 'user' && formData.password === 'password') {
+        if (formData.username === 'username' && formData.password === 'password') {
           // Successful login
           console.log("Login successful");
           setFormData({ username: '', password: '' });
@@ -63,7 +66,7 @@ const Login = ({ navigateTo }) => {
           setTimeout(() => {
             setShowSuccessMessage(false);
             // Redirect to another page after 1.5 seconds
-            navigateTo('home');
+            navigate('/home')
           }, 1500);
         } else {
           // Incorrect username or password

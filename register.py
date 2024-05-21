@@ -16,10 +16,11 @@ app.add_middleware(
 )
 
 DATABASE_CONFIG = {
-    'user': 'root',
-    'password': 'admin@123',
-    'host': '127.0.0.1',
-    'database': 'creditcard_campaign'
+     'host':'localhost',
+        'user':'test',
+        'password':'test*123',
+        'database':'creditcard_campaign'
+    
 }
 
 # Pydantic model for request body
@@ -46,7 +47,7 @@ async def store_user(user_data: UserData):
     
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO user (username, email, password, employeeid, position) VALUES (%s, %s, %s, %s, %s)"
+        query = "INSERT INTO user(username, email, password, employeeid, position) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (user_data.fullName, user_data.email, user_data.password, user_data.employeeId, user_data.position)) # Tanishka modified this
         conn.commit()
         return {"message": "User data stored successfully!"}

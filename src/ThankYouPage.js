@@ -1,7 +1,9 @@
 import './ThankYouPage.css';
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';//
 
-const ThankYouPage = ({navigateTo}) => {
+const ThankYouPage = ({ }) => {
+  const navigate = useNavigate();
   const handleBack = () => {
     // Redirect to the home page
     window.location.href = '/home';
@@ -14,7 +16,7 @@ const ThankYouPage = ({navigateTo}) => {
           <div className='wrapper-2'>
             <h1 className='T-headers'>Thank you !</h1>
             <p>Your details have been successfully submitted.</p>
-            <button className='go-home' onClick={() => navigateTo('CardList')}>View Distributed Cashback</button>
+            <button className='go-home' onClick={() => navigate('/recommendation')}>View Distributed Cashback</button>
           </div>
         </div>
       </div>

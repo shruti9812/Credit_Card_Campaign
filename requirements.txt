@@ -1,0 +1,8 @@
+langchain
+mysql-connector-python
+openai
+uvicorn
+fastapi
+mysql.connector
+pydantic
+starlette

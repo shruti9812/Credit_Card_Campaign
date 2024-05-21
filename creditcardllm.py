@@ -1,5 +1,5 @@
 import os
-import openai
+#import openai
 import pymysql
 import re
 from langchain.agents import agent_types ,create_sql_agent
@@ -21,12 +21,12 @@ OpenAI_API_Type_local = "azure"
 global userquery, llmresponse
 
 database="creditcard_campaign"
-username="root"
-password="Admin*123"
+username="test"
+password="test*123"
 #database="creditcard"
 #username="root"
-#password="Admin*123"
-host="127.0.0.1"
+#password="test*123"
+host="localhost"
 port='3306'
 #host="IN3329350W1"
 userquery=""
@@ -261,9 +261,9 @@ def insert_data(data):
   print("inside insert data function")
   # Replace with your database connection details
   connection = pymysql.connect(
-        host="127.0.0.1",
-        user="root",
-        password="Admin*123",
+        host="localhost",
+        user="test",
+        password="test*123",
         database="creditcard_campaign"
     )
   print("connection established")
@@ -294,9 +294,9 @@ def update_transaction_data(data):
     """
 
     connection = pymysql.connect(
-        host="127.0.0.1",
-        user="root",
-        password="Admin*123",
+        host="localhost",
+        user="test",
+        password="test*123",
         database="creditcard_campaign"
     )
     cursor = connection.cursor()

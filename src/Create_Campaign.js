@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';//
 import ThankYouPage from "./ThankYouPage";
 import { IoArrowBack } from "react-icons/io5";
 import "./styles.css";
 import axios from 'axios';
 
-const FormPage = ({ navigateTo }) => {
+const FormPage = ({  }) => {
   const [formData, setFormData] = useState({
     campaignTitle: "",
+    campaignBudget: "",
     campaignStartDate: "",
     campaignEndDate: "",
     cardType: "",
-    campaignBudget: "",
     transactionType: "",
     notEligibletransactionType: "",
     minOverallTransactionAmount: "",
@@ -36,14 +37,14 @@ const FormPage = ({ navigateTo }) => {
     try {
       const response = await axios.post('http://localhost:8000/store_campaigndetails/', formData);
       console.log('Campaign Details Submitted');
-      console.log('Response:', response.data);  
-      //navigate("/hello")    
+      console.log('Response:', response.data);   
       } catch (error) {
       console.error('Error:', error);
       }
       e.preventDefault();
     console.log("Form submitted:", formData);
     setSubmitted(true);
+    window.location.href = "/ThankYouPage";
   };
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -153,11 +154,11 @@ const FormPage = ({ navigateTo }) => {
                   className='big-input'
                 >
                   <option value=''>Select a card type</option>
-                  <option value='Card 1'>Visa</option>
-                  <option value='Card 2'>Mastercard</option>
-                  <option value='Card 3'>JCB</option>
-                  <option value='Card 4'>American Express</option>
-                  <option value='Card 5'>Discover</option>
+                  <option value='Visa'>Visa</option>
+                  <option value='Mastercard'>Mastercard</option>
+                  <option value='JCB'>JCB</option>
+                  <option value='American Express'>American Express</option>
+                  <option value='Discover'>Discover</option>
                 </select>
                 {errors.cardType && (
                   <span className='error'>{errors.cardType}</span>
@@ -269,11 +270,16 @@ const FormPage = ({ navigateTo }) => {
                 />
               </div>
             </div>
-            <button type='submit' className='submit-button' onClick={() => navigateTo('ThankYouPage')}>
+            <button type='submit' className='submit-button' onClick={handleSubmit}>
               Submit
+              
+             
             </button>
+            {(submitted &&  <h6>onClick={() => Navigate('/ThankYouPage')} You details have been succesfully submitted</h6>)}
+
+            
           </form>
-        </div>
+        </div>s
       </div>
     );
  

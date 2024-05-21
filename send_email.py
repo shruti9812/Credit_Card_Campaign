@@ -11,7 +11,7 @@ app = FastAPI()
 db_config = {
     'host': '127.0.0.1',
     'user': 'root',
-    'password': 'admin@123',
+    'password': 'Admin*123',
     'database': 'creditcard_campaign'
 }
 

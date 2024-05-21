@@ -6,7 +6,7 @@ from mysql.connector import Error
 from fastapi.middleware.cors import CORSMiddleware
  
 app = FastAPI()
-
+ 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],  # Specifies the origins that are permitted to make requests.
@@ -16,10 +16,10 @@ app.add_middleware(
 )
  
 DATABASE_CONFIG = {
-    'user': 'root',
-    'password': 'admin@123',
-    'host': '127.0.0.1',
-    'database': 'creditcard_campaign'
+        'host':'localhost',
+        'user':'test',
+        'password':'test*123',
+        'database':'creditcard_campaign'
 }
  
  
@@ -58,7 +58,7 @@ async def store_campaigndetails(user_data: UserData):
         cursor = conn.cursor()
         query = "INSERT INTO campaign_details (CampaignTitle,CampaignBudget,CampaignStartDate,CampaignEndDate,CardType,TransactionType,NotEligibleTransactionType,MinOverallTransactionAmount,MinCashbackAmount,MaxCashbackOverall,MaxCashbackPerTransaction,Frequency,AdditionalField) VALUES (%s, %s,%s, %s,%s,%s,%s, %s,%s, %s,%s, %s,%s)"
         cursor.execute(query, (user_data.campaignTitle,user_data.campaignBudget,user_data.campaignStartDate,user_data.campaignEndDate,user_data.cardType,user_data.transactionType,user_data.notEligibleTransactionType,user_data.minOverallTransactionAmount,user_data.minCashbackAmount,user_data.maxCashbackOverall,user_data.maxCashbackPerTransaction,user_data.frequency,user_data.additionalField))
-        
+       
         conn.commit()
         return {"message": "User data stored successfully!"}
     except Error as e:
@@ -67,7 +67,7 @@ async def store_campaigndetails(user_data: UserData):
         if conn.is_connected():
             cursor.close()
             conn.close()
-
+ 
 @app.get("/")
 async def read_campaigndetails():
     conn = get_db_connection()
@@ -79,7 +79,7 @@ async def read_campaigndetails():
         query = "select * from campaign_details"
         cursor.execute(query)
         result=cursor.fetchall()
-        
+       
         return {"message": "User data fetched successfully!"}
     except Error as e:
         return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"message": "Failed to store user data", "error": str(e)})

@@ -42,7 +42,7 @@ class Credentials(BaseModel):
     password: str
  
 # Create database engine
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:admin@123@localhost/creditcard_campaign"
+SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://test:test*123@localhost/creditcard_campaign"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
  
 # Create database session
@@ -60,6 +60,7 @@ def get_db():
 @app.post("/login/")
 def login(credentials: Credentials, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == credentials.username).first()
+    
     if user is None or user.password != credentials.password:
         raise HTTPException(status_code=401, detail="Invalid username or password")
     return {"message": "Login successful"}
