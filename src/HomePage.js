@@ -5,12 +5,19 @@ import logo from './EYLogo.jpg';
 import bannerImage from './creditcards.jpg';
 import userIcon from './User.jpg';
 import UserManual from './UserManual.jpg';
- 
+import {Modal,Button} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const HomePage = ({  }) => {
   const navigate = useNavigate();//
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [userData, setUserData] = useState(null);
- 
+  const userdetails = JSON.parse(localStorage.getItem('userdetails'));
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   const handleUserIconClick = async () => {
     try {
       // Simulated fetch user details from MySQL database
@@ -47,7 +54,7 @@ const HomePage = ({  }) => {
               alt="User Icon"
               className="user-icon"
               title="user details"
-              onClick={handleUserIconClick}
+              onClick={handleShow}
             />
           </div>
         </div>
@@ -113,8 +120,27 @@ const HomePage = ({  }) => {
           </div>
         </div>
       )}
+
+<Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>User Details</Modal.Title>
+        </Modal.Header>
+        {userdetails !== null &&userdetails !== undefined  && <Modal.Body><p><strong>Name:</strong> {userdetails.username}</p>
+                <p><strong>Email:</strong> {userdetails.email}</p>
+                <p><strong>EmployeeId:</strong> {userdetails.employeeid}</p>
+                <p><strong>Position:</strong> {userdetails.position}</p></Modal.Body>}
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
  
+
 export default HomePage;

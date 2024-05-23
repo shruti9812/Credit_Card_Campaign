@@ -17,7 +17,6 @@ const Login = ({  }) => {
 
   const handleBack = () => {
     // Redirect to the Landing page
-    
     navigate('/')
   };
 
@@ -36,6 +35,7 @@ const Login = ({  }) => {
       console.log('login successfull');
       console.log('Response:', response.data);  
       window.location.href = '/home';
+      localStorage.setItem('userdetails', JSON.stringify(response.data));
       } catch (error) {
       console.error('Error:', error);
       }
