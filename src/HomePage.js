@@ -11,8 +11,9 @@ const HomePage = ({  }) => {
   const navigate = useNavigate();//
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [userData, setUserData] = useState(null);
-  const userdetails = JSON.parse(localStorage.getItem('userdetails'));
   const [show, setShow] = useState(false);
+  const userdetails = JSON.parse(localStorage.getItem('userdetails'));
+  
   useEffect(()=>{
    if(userdetails ===null){
     navigate("/login")
