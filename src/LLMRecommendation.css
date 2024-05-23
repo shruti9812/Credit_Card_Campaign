@@ -37,9 +37,12 @@
     
   }
   
-  .Recomm-tabs button:hover {
-    background-color: #f0f0f0;
+
+  .selected  {
+    background-color: #A9A9A9;
+    
   }
+
   
   .Recomm-input {
     width: 100%;

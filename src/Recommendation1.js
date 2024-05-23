@@ -6,28 +6,23 @@ import logo from './EYLogo.jpg';
 
 const App = ({ }) => {
   const navigate = useNavigate();//
-  
+  const [response,setResponse]  = useState(["first Recommendation", "second Recommendation", "third Recommendation"])
   const [selectedTab, setSelectedTab] = useState('recommendation1');
   const [criteria, setCriteria] = useState('');
   const [data, setData] = useState([]);
-
+  const [submit,setSubmit ] = useState(false)
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
-    // Fetch data from database based on selected tab
-    // For example, you can use fetch or axios to get data
-    // setData(fetchedData);
   };
 
   const handleResubmit = () => {
-    // Fetch data based on criteria
-    // For example, you can use fetch or axios to get data
-    // setData(fetchedDataBasedOnCriteria);
+    setSubmit(true)
+    setSelectedTab("User")
+    let data = response
+    data.push("Enter By user")
+    console.log(data)
+    setResponse([...data])
   };
-  // const handleBack = () => {
-  //   // Redirect to the home page
-  //   window.location.href = "/home";
-    
-  // };
 
   return (
     <div className="Recomm-App">
@@ -35,17 +30,14 @@ const App = ({ }) => {
       <button className='BackButton' onClick={() => navigate('/Create_Campaign')}>
                   <IoArrowBack /> Back
                 </button>
-                AI-Driven Cashback Recommendations
-    
-          {/* <img src={logo} alt="Bank Logo" className="logo" /> */}
-          
+                AI-Driven Cashback Recommendations          
       </header>
       <div className="Recomm-content">
         <div className="Recomm-left">
           <div className="Recomm-tabs">
-            <button onClick={() => handleTabClick('recommendation1')}>Recommendation1</button>
-            <button onClick={() => handleTabClick('recommendation2')}>Recommendation2</button>
-            <button onClick={() => handleTabClick('recommendation3')}>Recommendation3</button>
+            <button onClick={() => handleTabClick('recommendation1')} className={selectedTab  === 'recommendation1' ? 'selected' : ''}>Recommendation1</button>
+            <button onClick={() => handleTabClick('recommendation2')} className={selectedTab  === 'recommendation2' ? 'selected' : ''}>Recommendation2</button>
+            <button onClick={() => handleTabClick('recommendation3')}className={selectedTab  === 'recommendation3' ? 'selected' : ''}>Recommendation3</button>
           </div>
           <p>If you don't find relevant recommendation, please write your prompt below:</p>
           <input className='Recomm-input'
@@ -57,19 +49,17 @@ const App = ({ }) => {
         </div>
         <div className="Recomm-right">
           <h2>Criteria</h2>
-          <p>{criteria}</p>
-          <h2>Data</h2>
-          <div>
-            {data.length ? (
-              <ul>
-                {data.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>No data available</p>
-            )}
-          </div>
+          <h2>{selectedTab}</h2>
+          { selectedTab === 'recommendation1' && !submit && <div>
+            <p>{response[0]}</p>
+          </div>}
+          { selectedTab === 'recommendation2' &&  !submit &&<div>
+          <p>{response[1]}</p>
+          </div>}
+          { selectedTab === 'recommendation3' && !submit && <div>
+          <p>{response[2]}</p>
+          </div>}
+          {submit && <div> <p>{response[3]}</p> </div>}
         </div>
       </div>
     </div>
