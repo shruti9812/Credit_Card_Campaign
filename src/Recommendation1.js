@@ -24,6 +24,8 @@ const App = ({ }) => {
     setResponse([...data])
   };
 
+   
+
   return (
     <div className="Recomm-App">
       <header className="Recomm-App-header">
@@ -40,11 +42,8 @@ const App = ({ }) => {
             <button onClick={() => handleTabClick('recommendation3')}className={selectedTab  === 'recommendation3' ? 'selected' : ''}>Recommendation3</button>
           </div>
           <p>If you don't find relevant recommendation, please write your prompt below:</p>
-          <input className='Recomm-input'
-            type="text"
-            value={criteria}
-            onChange={(e) => setCriteria(e.target.value)}
-          />
+         
+          <textarea name="postContent" className='Recomm-input' onChange={(e) => setCriteria(e.target.value)} rows={4} cols={40} />
           <button className="submit-button" onClick={handleResubmit}>Resubmit</button>
         </div>
         <div className="Recomm-right">
