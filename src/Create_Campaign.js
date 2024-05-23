@@ -6,6 +6,7 @@ import "./styles.css";
 import axios from 'axios';
 
 const FormPage = ({  }) => {
+  const navigate = useNavigate();//
   const [formData, setFormData] = useState({
     campaignTitle: "",
     campaignBudget: "",
@@ -57,25 +58,18 @@ const FormPage = ({  }) => {
   //   }
 
     
- 
-
-  const handleBack = () => {
-    // Redirect to the home page
-    window.location.href = "/home";
-  };
-
   
     return (
-      <div className='form-page-container'>
+       <div className='form-page-container'>
         <div className='form-container'>
-          <div className='form-header'>
-            <button className='BackButton' onClick={handleBack}>
+          <header className='form-header'>
+          <button className='BackButton' onClick={() => navigate('/home')}>
                   <IoArrowBack /> Back
                 </button>
                 <h2 className='page-title'>
               Campaign Form to Calculate Cashback Amount
             </h2>
-          </div>
+          </header>
 
           <form onSubmit={handleSubmit} className='full-width-form'>
             <div className='form-row'>
@@ -279,7 +273,7 @@ const FormPage = ({  }) => {
 
             
           </form>
-        </div>s
+        </div>
       </div>
     );
  

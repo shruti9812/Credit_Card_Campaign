@@ -2,11 +2,13 @@
 
 /* Form page container */
 .form-page-container {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   align-items: center;
-  height: 110vh;
+  height: 110vh; 
   background-color: #f4f4f4;
+  margin-left:20%;
+
 }
 
 /* Form container */
@@ -15,8 +17,9 @@
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 55%;
+  width: 75%;
   box-shadow: 0 10px 16px 1px rgba(174, 199, 251, 1);
+  
 }
 
 

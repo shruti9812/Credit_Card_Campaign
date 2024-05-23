@@ -67,10 +67,10 @@ const Login = ({  }) => {
             setShowSuccessMessage(false);
             // Redirect to another page after 1.5 seconds
             navigate('/home')
-          }, 1500);
+          }, 1);
         } else {
           // Incorrect username or password
-          console.error("Incorrect username or password");
+          // console.error("Incorrect username or password");
           setErrors({ loginError: "Incorrect username or password" });
         }
       } catch (error) {

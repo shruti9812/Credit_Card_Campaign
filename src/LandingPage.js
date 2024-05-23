@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';//
 import './landingPage.css';
 import logo from './EYLogo.jpg';
@@ -6,6 +6,14 @@ import creditCard from './creditcards.jpg';
  
 const LandingPage = ({  }) => {
   const navigate = useNavigate();//
+  const [isLoggedIn,setIsLoggedIn] = useState(false)
+  const userdetails = JSON.parse(localStorage.getItem('userdetails'));
+ 
+  useEffect(()=>{
+   if(userdetails !==null){
+    setIsLoggedIn(true)
+   }
+  },[userdetails])
   return (
  
     <div className="container">
@@ -18,9 +26,10 @@ const LandingPage = ({  }) => {
          
         </div>
         <div className="action-buttons">
+          {!isLoggedIn && <>
           <button type='button' className="go-home" onClick={() => navigate('/register')}>Register</button>
-          <button type='button' className="go-home" onClick={() => navigate('/login')}>Login</button>
-          <button type='button' className="go-home" onClick={() => navigate('/home')}>Home</button>
+          <button type='button' className="go-home" onClick={() => navigate('/login')}>Login</button> </>}
+          {isLoggedIn &&<button type='button' className="go-home" onClick={() => navigate('/home')}>Home</button>}
         </div>
       </header>
    

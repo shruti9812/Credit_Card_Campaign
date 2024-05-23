@@ -46,7 +46,7 @@ const HomePage = ({  }) => {
           <div className="Logo">
             <img src={logo} alt="Bank Logo" className="logo" />
           </div>
-          <h2 className="header">SilverLine Savings Bank</h2>
+          <h2>SilverLine Savings Bank</h2>
           <div className="user-icon-container">
             <img
               src={UserManual}
@@ -67,10 +67,10 @@ const HomePage = ({  }) => {
  
       <main className="main-content">
         <div className="content-container">
-          <h2 className="heading h1">
+          <h2 className="welcome-message">
             Welcome to Silverline Savings Credit Card Department
           </h2>
-          <p className="description">
+          <p className="welcome-message">
             Welcome to Silverline Savings Bank's Credit Card Department. We are
             dedicated to providing you with the best credit card services
             tailored to your financial needs. Whether you're looking for
