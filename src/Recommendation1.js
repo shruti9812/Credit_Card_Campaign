@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';//
 import './LLMRecommendation.css';
 import { IoArrowBack } from "react-icons/io5";
-import logo from './EYLogo.jpg';
 
 const App = ({ }) => {
   const navigate = useNavigate();//
@@ -15,6 +14,13 @@ const App = ({ }) => {
     setSelectedTab(tab);
   };
 
+  const userdetails = JSON.parse(localStorage.getItem('userdetails'));
+  
+  useEffect(()=>{
+   if(userdetails ===null){
+    navigate("/login")
+   }
+  },[userdetails])
   const handleResubmit = () => {
     setSubmit(true)
     setSelectedTab("User")

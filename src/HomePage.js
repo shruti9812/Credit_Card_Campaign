@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';//
 import './Page.css';
 import logo from './EYLogo.jpg';
@@ -13,7 +13,11 @@ const HomePage = ({  }) => {
   const [userData, setUserData] = useState(null);
   const userdetails = JSON.parse(localStorage.getItem('userdetails'));
   const [show, setShow] = useState(false);
-
+  useEffect(()=>{
+   if(userdetails ===null){
+    navigate("/login")
+   }
+  },[userdetails])
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
