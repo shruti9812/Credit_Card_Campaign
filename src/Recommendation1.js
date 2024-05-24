@@ -5,7 +5,7 @@ import { IoArrowBack } from "react-icons/io5";
 
 const App = ({ }) => {
   const navigate = useNavigate();//
-  const [response,setResponse]  = useState(["first Recommendation", "second Recommendation", "third Recommendation"])
+  const [response,setResponse]  = useState([])
   const [selectedTab, setSelectedTab] = useState('recommendation1');
   const [criteria, setCriteria] = useState('');
   const [data, setData] = useState([]);
@@ -20,14 +20,20 @@ const App = ({ }) => {
    if(userdetails ===null){
     navigate("/login")
    }
+   callLLMAPI()
   },[userdetails])
+
+  const callLLMAPI =async ()=>{
+    const payload = {
+      prompt:criteria
+    }
+    const response = await axios.post('http://localhost:8000/login/', payload);
+    setResponse([...response.data])
+  }
   const handleResubmit = () => {
     setSubmit(true)
-    setSelectedTab("User")
-    let data = response
-    data.push("Enter By user")
-    console.log(data)
-    setResponse([...data])
+    setSelectedTab("recommendation1")  
+    callLLMAPI();
   };
 
    
@@ -64,7 +70,7 @@ const App = ({ }) => {
           { selectedTab === 'recommendation3' && !submit && <div>
           <p>{response[2]}</p>
           </div>}
-          {submit && <div> <p>{response[3]}</p> </div>}
+          
         </div>
       </div>
     </div>
