@@ -61,13 +61,13 @@ const App = ({ }) => {
         <div className="Recomm-right">
           <h2>Criteria</h2>
           <h2>{selectedTab}</h2>
-          { selectedTab === 'recommendation1' && !submit && <div>
+          { selectedTab === 'recommendation1' &&  <div>
             <p>{response[0]}</p>
           </div>}
-          { selectedTab === 'recommendation2' &&  !submit &&<div>
+          { selectedTab === 'recommendation2' && <div>
           <p>{response[1]}</p>
           </div>}
-          { selectedTab === 'recommendation3' && !submit && <div>
+          { selectedTab === 'recommendation3' &&  <div>
           <p>{response[2]}</p>
           </div>}
           
