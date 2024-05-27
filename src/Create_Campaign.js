@@ -45,7 +45,7 @@ const FormPage = ({  }) => {
       e.preventDefault();
     console.log("Form submitted:", formData);
     setSubmitted(true);
-    window.location.href = "/ThankYouPage";
+    navigate("/ThankYouPage")
   };
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -269,7 +269,7 @@ const FormPage = ({  }) => {
               
              
             </button>
-            {(submitted &&  <h6>onClick={() => Navigate('/ThankYouPage')} You details have been succesfully submitted</h6>)}
+            {(submitted &&  <h6>onClick={() => Navigate("/ThankYouPage")} You details have been succesfully submitted</h6>)}
 
             
           </form>

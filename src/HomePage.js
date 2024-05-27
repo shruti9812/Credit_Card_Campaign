@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';//
+import { useNavigate } from 'react-router-dom';
 import './Page.css';
 import logo from './EYLogo.jpg';
 import bannerImage from './creditcards.jpg';
 import userIcon from './User.jpg';
 import UserManual from './UserManual.jpg';
-import {Modal,Button} from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const HomePage = ({  }) => {
-  const navigate = useNavigate();//
+
+const HomePage = () => {
+  const navigate = useNavigate();
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [userData, setUserData] = useState(null);
   const [show, setShow] = useState(false);
   const userdetails = JSON.parse(localStorage.getItem('userdetails'));
-  
-  useEffect(()=>{
-   if(userdetails ===null){
-    navigate("/login")
-   }
-  },[userdetails])
+
+  useEffect(() => {
+    if (userdetails === null) {
+      navigate('/login');
+    }
+  }, [userdetails]);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   const handleUserIconClick = async () => {
     try {
@@ -31,14 +32,15 @@ const HomePage = ({  }) => {
       setUserData(data);
       setShowUserDetails(true);
     } catch (error) {
-      console.error("Error fetching user details:", error);
+      console.error('Error fetching user details:', error);
     }
   };
- 
-  const handleCloseButtonClick = () => {
-    setShowUserDetails(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userdetails');
+    navigate('/');
   };
- 
+
   return (
     <div className="container">
       <header className="header">
@@ -64,7 +66,7 @@ const HomePage = ({  }) => {
           </div>
         </div>
       </header>
- 
+
       <main className="main-content">
         <div className="content-container">
           <h2 className="welcome-message">
@@ -85,10 +87,7 @@ const HomePage = ({  }) => {
           <button className="go-home" onClick={() => navigate('/login')}>
             View Campaign
           </button>
-          <button
-            className="go-home"
-            onClick={() => navigate('/Create_Campaign')}
-          >
+          <button className="go-home" onClick={() => navigate('/Create_Campaign')}>
             Create Campaign
           </button>
         </div>
@@ -104,48 +103,30 @@ const HomePage = ({  }) => {
         </div>
         <p>&copy; 2024 Silverline Savings Bank. All rights reserved.</p>
       </footer>
- 
-      {/* User Details Popup */}
-      {showUserDetails && (
-        <div className="user-details-popup">
-          <div className="popup-content">
-            <button className="close-button" onClick={handleCloseButtonClick}>
-              Close
-            </button>
-            {userData ? (
-              <div className="user-details">
-                <h2>User Details</h2>
-                <p><strong>Name:</strong> {userData.name}</p>
-                <p><strong>Email:</strong> {userData.email}</p>
-                {/* Add more user details here */}
-              </div>
-            ) : (
-              <p>Loading user details...</p>
-            )}
-          </div>
-        </div>
-      )}
 
-<Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>User Details</Modal.Title>
+    <Modal show={show} onHide={handleClose} className="custom-modal">
+        <Modal.Header closeButton className="custom-modal-header">
+          <img src={logo} alt="Bank Logo" className="logo" />
+          <Modal.Title className="custom-modal-title">User Details</Modal.Title>
         </Modal.Header>
-        {userdetails !== null &&userdetails !== undefined  && <Modal.Body><p><strong>Name:</strong> {userdetails.username}</p>
-                <p><strong>Email:</strong> {userdetails.email}</p>
-                <p><strong>EmployeeId:</strong> {userdetails.employeeid}</p>
-                <p><strong>Position:</strong> {userdetails.position}</p></Modal.Body>}
+        {userdetails !== null && userdetails !== undefined && (
+          <Modal.Body>
+            <p><strong>Name:</strong> {userdetails.username}</p>
+            <p><strong>Email:</strong> {userdetails.email}</p>
+            <p><strong>EmployeeId:</strong> {userdetails.employeeid}</p>
+            <p><strong>Position:</strong> {userdetails.position}</p>
+          </Modal.Body>
+        )}
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary" onClick={handleLogout}>
+            Logout
           </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>
   );
 };
- 
 
 export default HomePage;
+
+    
