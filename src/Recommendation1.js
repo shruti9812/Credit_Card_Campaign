@@ -8,7 +8,7 @@ const App = () => {
   const navigate = useNavigate();
   const [responses, setResponses] = useState(["", "", ""]); // Initialize responses as an array with three empty strings
   const [selectedTab, setSelectedTab] = useState('recommendation1');
-  const [criteria, setCriteria] = useState("Generate a promotional campaign brief...");
+  const [criteria, setCriteria] = useState("Generate a promotional campaign brief for a cashback offer targeting customers of business bank by using the following input details - Campaign Title : Summer Purchase discount, Campaign Budget : 100000 ,Campaign Start Date : 22 May 2024, Campaign End Date : 30 May 2024, Card Type : MasterCard, Transaction Type : Purchase, Not Eligible ,Transaction Type : Loan ,Minimum Over All Transaction Amount : 5000, Minimum Cashback Amount : 100, Maximum Cashback Overall : 1000, Maximum Cashback Per Transaction : 1000 , The offer should guarantee cashback based on monthly spending tiers for the valid customers and provide us the output in the detailed description with campaign name, no of eligible cards, card types, total budget amount, pending amount after providing cashback etc. Note: the above dates mentioned are campaigned dates and not the trancation dates, this cannot be used for querying database");
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
