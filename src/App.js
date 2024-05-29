@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './HomePage';
@@ -11,51 +12,28 @@ import UserDetails from './UserDetails';
 import ThankYouPage from './ThankYouPage';
 import CardList from './CardList';
 import Recommendation1 from './Recommendation1';
-import RAGRecommendation from './RAGRecommendation'
- 
+import { CSpinner, useColorModes } from '@coreui/react'
+import './scss/style.scss'
+const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+
 function App() {
-  const [route, setRoute] = useState('Landing');
- 
-  const navigateTo = (newRoute) => {
-    setRoute(newRoute);
-  };
- 
-  let pageContent;
-  switch (route) {
-    case 'Landing':
-      pageContent = <LandingPage navigateTo={navigateTo} />;
-      break;
-    case 'home':
-      pageContent = <HomePage navigateTo={navigateTo} />;
-      break;
-    case 'login':
-      pageContent = <LoginPage navigateTo={navigateTo} />;
-      break;
-    case 'register':
-      pageContent = <RegisterPage navigateTo={navigateTo} />;
-      break;
-    case 'UserDetails':
-      pageContent = <UserDetails navigateTo={navigateTo} />;
-      break;
-    case 'Create_Campaign':
-      pageContent = <Create_Campaign navigateTo={navigateTo} />;
-      break;
-    case 'recommendation':
-      pageContent = <Recommendation1 navigateTo={navigateTo} />;
-      break;
-      case 'RAGRecommendation':
-      pageContent = <RAGRecommendation navigateTo={navigateTo} />;
-      break;
-    case 'ThankYouPage':
-      pageContent = <ThankYouPage navigateTo={navigateTo} />;
-      break;
-    case 'CardList':
-      pageContent = <CardList navigateTo={navigateTo} />;
-      break;
-    default:
-      pageContent = <LandingPage navigateTo={navigateTo} />;
-  }
- 
+  const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+  const storedTheme = useSelector((state) => state.theme)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.href.split('?')[1])
+    const theme = urlParams.get('theme') && urlParams.get('theme').match(/^[A-Za-z0-9\s]+/)[0]
+    if (theme) {
+      setColorMode(theme)
+    }
+
+    if (isColorModeSet()) {
+      return
+    }
+
+    setColorMode(storedTheme)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="App">
       <Router>
@@ -70,8 +48,8 @@ function App() {
         <Route path="/CardList" element={<CardList />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/recommendation" element={<Recommendation1 />} />
-        <Route path="/RAGRecommendation" element={<RAGRecommendation/>}/>
-        
+        <Route path="/*" name="Home" element={<DefaultLayout />} />
+
       </Routes>
     </Router>
      
