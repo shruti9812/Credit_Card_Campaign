@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -14,11 +14,253 @@ import { getStyle } from '@coreui/utils'
 import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
 import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
+import { useSelector } from 'react-redux'
 
 const WidgetsDropdown = (props) => {
   const widgetChartRef1 = useRef(null)
   const widgetChartRef2 = useRef(null)
-
+  const [data,setData] = useState([
+    {
+      "CampaignNumber": 1,
+      "CampaignTitle": "Swiggy – No order too small, IPL 2018",
+      "CampaignBudget": 10000000,
+      "CampaignStartDate": "2018-07-01T00:00:00",
+      "CampaignEndDate": "2018-08-30T00:00:00",
+      "CardType": "RuPay Credit Card",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "NA",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 400,
+      "MaxCashbackPerTransaction": 1000,
+      "Frequency": 1,
+      "AdditionalField": ""
+    },
+    {
+      "CampaignNumber": 2,
+      "CampaignTitle": "Zomato Premier League, IPL 2019",
+      "CampaignBudget": 5000000,
+      "CampaignStartDate": "2019-03-24T00:00:00",
+      "CampaignEndDate": "2019-04-24T00:00:00",
+      "CardType": "Tata Neu RuPay Credit Card",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "NA",
+      "MinOverallTransactionAmount": 3000,
+      "MinCashbackAmount": 100,
+      "MaxCashbackOverall": 300,
+      "MaxCashbackPerTransaction": 1200,
+      "Frequency": 1,
+      "AdditionalField": ""
+    },
+    {
+      "CampaignNumber": 3,
+      "CampaignTitle": "IPL 2024",
+      "CampaignBudget": 50000000,
+      "CampaignStartDate": null,
+      "CampaignEndDate": null,
+      "CardType": null,
+      "TransactionType": null,
+      "NotEligibleTransactionType": null,
+      "MinOverallTransactionAmount": null,
+      "MinCashbackAmount": null,
+      "MaxCashbackOverall": null,
+      "MaxCashbackPerTransaction": null,
+      "Frequency": null,
+      "AdditionalField": null
+    },
+    {
+      "CampaignNumber": 4,
+      "CampaignTitle": "ABC Campaign",
+      "CampaignBudget": 60000000,
+      "CampaignStartDate": null,
+      "CampaignEndDate": null,
+      "CardType": null,
+      "TransactionType": null,
+      "NotEligibleTransactionType": null,
+      "MinOverallTransactionAmount": null,
+      "MinCashbackAmount": null,
+      "MaxCashbackOverall": null,
+      "MaxCashbackPerTransaction": null,
+      "Frequency": null,
+      "AdditionalField": null
+    },
+    {
+      "CampaignNumber": 5,
+      "CampaignTitle": "abc3",
+      "CampaignBudget": 60000000,
+      "CampaignStartDate": null,
+      "CampaignEndDate": null,
+      "CardType": null,
+      "TransactionType": null,
+      "NotEligibleTransactionType": null,
+      "MinOverallTransactionAmount": null,
+      "MinCashbackAmount": null,
+      "MaxCashbackOverall": null,
+      "MaxCashbackPerTransaction": null,
+      "Frequency": null,
+      "AdditionalField": null
+    },
+    {
+      "CampaignNumber": 6,
+      "CampaignTitle": "abc5",
+      "CampaignBudget": 60000000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 2",
+      "TransactionType": "7000000",
+      "NotEligibleTransactionType": "COD",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 100,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 200,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 7,
+      "CampaignTitle": "xyz",
+      "CampaignBudget": 30000000,
+      "CampaignStartDate": null,
+      "CampaignEndDate": null,
+      "CardType": "Card 2",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "cod",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 100,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 8,
+      "CampaignTitle": "Test 1",
+      "CampaignBudget": 30000000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 2",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "cod",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 100,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 9,
+      "CampaignTitle": "Test 3",
+      "CampaignBudget": 30000000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 2",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "cod",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 100,
+      "Frequency": 1,
+      "AdditionalField": ""
+    },
+    {
+      "CampaignNumber": 10,
+      "CampaignTitle": "abc4",
+      "CampaignBudget": 2000000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 1",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "cod",
+      "MinOverallTransactionAmount": 12000,
+      "MinCashbackAmount": 10000,
+      "MaxCashbackOverall": 20000,
+      "MaxCashbackPerTransaction": 200,
+      "Frequency": 1,
+      "AdditionalField": ""
+    },
+    {
+      "CampaignNumber": 11,
+      "CampaignTitle": "ABC",
+      "CampaignBudget": 9000000,
+      "CampaignStartDate": "2018-07-01T00:00:00",
+      "CampaignEndDate": "2018-07-01T00:00:00",
+      "CardType": "online",
+      "TransactionType": "ABC",
+      "NotEligibleTransactionType": "ABC",
+      "MinOverallTransactionAmount": 400,
+      "MinCashbackAmount": 700,
+      "MaxCashbackOverall": 500,
+      "MaxCashbackPerTransaction": 400,
+      "Frequency": 5,
+      "AdditionalField": "NA"
+    },
+    {
+      "CampaignNumber": 12,
+      "CampaignTitle": "abc12",
+      "CampaignBudget": 400000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-30T00:00:00",
+      "CardType": "Card 1",
+      "TransactionType": "",
+      "NotEligibleTransactionType": "22222",
+      "MinOverallTransactionAmount": 1233,
+      "MinCashbackAmount": 123,
+      "MaxCashbackOverall": 333,
+      "MaxCashbackPerTransaction": 111,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 13,
+      "CampaignTitle": "abc14",
+      "CampaignBudget": 400000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 1",
+      "TransactionType": "11222",
+      "NotEligibleTransactionType": "22222",
+      "MinOverallTransactionAmount": 1233,
+      "MinCashbackAmount": 123,
+      "MaxCashbackOverall": 333,
+      "MaxCashbackPerTransaction": 111,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 14,
+      "CampaignTitle": "abc31",
+      "CampaignBudget": 120000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 2",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "COD",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 1200,
+      "Frequency": 1,
+      "AdditionalField": "na"
+    },
+    {
+      "CampaignNumber": 15,
+      "CampaignTitle": "abc32",
+      "CampaignBudget": 120000,
+      "CampaignStartDate": "2024-05-01T00:00:00",
+      "CampaignEndDate": "2024-05-31T00:00:00",
+      "CardType": "Card 2",
+      "TransactionType": "online",
+      "NotEligibleTransactionType": "COD",
+      "MinOverallTransactionAmount": 5000,
+      "MinCashbackAmount": 50,
+      "MaxCashbackOverall": 1200,
+      "MaxCashbackPerTransaction": 1200,
+      "Frequency": 1,
+      "AdditionalField": ""
+    }
+  ])
   useEffect(() => {
     document.documentElement.addEventListener('ColorSchemeChange', () => {
       if (widgetChartRef1.current) {
@@ -37,6 +279,9 @@ const WidgetsDropdown = (props) => {
     })
   }, [widgetChartRef1, widgetChartRef2])
 
+
+
+
   return (
     <CRow className={props.className} xs={{ gutter: 4 }}>
       <CCol sm={6} xl={4} xxl={3}>
@@ -44,26 +289,26 @@ const WidgetsDropdown = (props) => {
           color="primary"
           value={
             <>
-              26K{' '}
+              {data.length}
               <span className="fs-6 fw-normal">
-                (-12.4% <CIcon icon={cilArrowBottom} />)
+                {/* (-12.4% <CIcon icon={cilArrowBottom} />) */}
               </span>
             </>
           }
-          title="Users"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
+          title="Total Campaign"
+          // action={
+          //   <CDropdown alignment="end">
+          //     <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
+          //       <CIcon icon={cilOptions} />
+          //     </CDropdownToggle>
+          //     <CDropdownMenu>
+          //       <CDropdownItem>Action</CDropdownItem>
+          //       <CDropdownItem>Another action</CDropdownItem>
+          //       <CDropdownItem>Something else here...</CDropdownItem>
+          //       <CDropdownItem disabled>Disabled action</CDropdownItem>
+          //     </CDropdownMenu>
+          //   </CDropdown>
+          // }
           chart={
             <CChartLine
               ref={widgetChartRef1}
@@ -134,26 +379,26 @@ const WidgetsDropdown = (props) => {
           color="info"
           value={
             <>
-              $6.200{' '}
+              {data.reduce((n, {CampaignBudget}) => n + CampaignBudget, 0)}
               <span className="fs-6 fw-normal">
-                (40.9% <CIcon icon={cilArrowTop} />)
+                {/* (40.9% <CIcon icon={cilArrowTop} />) */}
               </span>
             </>
           }
-          title="Income"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
+          title="Total Campaign Budget"
+          // action={
+          //   <CDropdown alignment="end">
+          //     <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
+          //       <CIcon icon={cilOptions} />
+          //     </CDropdownToggle>
+          //     <CDropdownMenu>
+          //       <CDropdownItem>Action</CDropdownItem>
+          //       <CDropdownItem>Another action</CDropdownItem>
+          //       <CDropdownItem>Something else here...</CDropdownItem>
+          //       <CDropdownItem disabled>Disabled action</CDropdownItem>
+          //     </CDropdownMenu>
+          //   </CDropdown>
+          // }
           chart={
             <CChartLine
               ref={widgetChartRef2}
@@ -225,24 +470,24 @@ const WidgetsDropdown = (props) => {
             <>
               2.49%{' '}
               <span className="fs-6 fw-normal">
-                (84.7% <CIcon icon={cilArrowTop} />)
+                {/* (84.7% <CIcon icon={cilArrowTop} />) */}
               </span>
             </>
           }
           title="Conversion Rate"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
+          // action={
+          //   <CDropdown alignment="end">
+          //     <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
+          //       <CIcon icon={cilOptions} />
+          //     </CDropdownToggle>
+          //     <CDropdownMenu>
+          //       <CDropdownItem>Action</CDropdownItem>
+          //       <CDropdownItem>Another action</CDropdownItem>
+          //       <CDropdownItem>Something else here...</CDropdownItem>
+          //       <CDropdownItem disabled>Disabled action</CDropdownItem>
+          //     </CDropdownMenu>
+          //   </CDropdown>
+          // }
           chart={
             <CChartLine
               className="mt-3"
@@ -290,7 +535,7 @@ const WidgetsDropdown = (props) => {
           }
         />
       </CCol>
-      <CCol sm={6} xl={4} xxl={3}>
+      {/* <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
           color="danger"
           value={
@@ -383,7 +628,7 @@ const WidgetsDropdown = (props) => {
             />
           }
         />
-      </CCol>
+      </CCol> */}
     </CRow>
   )
 }
