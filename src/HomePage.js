@@ -7,7 +7,7 @@ import userIcon from './User.jpg';
 import UserManual from './UserManual.jpg';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom'
 const HomePage = () => {
   const navigate = useNavigate();
   const [showUserDetails, setShowUserDetails] = useState(false);
@@ -15,11 +15,11 @@ const HomePage = () => {
   const [show, setShow] = useState(false);
   const userdetails = JSON.parse(localStorage.getItem('userdetails'));
 
-  useEffect(() => {
-    if (userdetails === null) {
-      navigate('/login');
-    }
-  }, [userdetails]);
+  // useEffect(() => {
+  //   if (userdetails === null) {
+  //     navigate('/login');
+  //   }
+  // }, [userdetails]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -84,7 +84,7 @@ const HomePage = () => {
           </h2>
         </div>
         <div className="action-buttons">
-          <button className="go-home" onClick={() => navigate('/login')}>
+          <button className="go-home" onClick={() => navigate('/dashboard')}>
             View Campaign
           </button>
           <button className="go-home" onClick={() => navigate('/Create_Campaign')}>

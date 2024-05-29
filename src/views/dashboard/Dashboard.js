@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import {
@@ -56,6 +56,12 @@ import MainChart from './MainChart'
 import { arrayJSON } from '../../data'
 
 const Dashboard = () => {
+  const [count,setCount] = useState(false)
+  useEffect(()=>{
+    
+    count && window.location.reload();
+    setCount(true)
+  },[])
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
