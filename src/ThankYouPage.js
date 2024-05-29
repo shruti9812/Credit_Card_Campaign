@@ -16,7 +16,7 @@ const ThankYouPage = ({ }) => {
           <div className='wrapper-2'>
             <h1 className='T-headers'>Thank you !</h1>
             <p>Your details have been successfully submitted.</p>
-            <button className='go-home' onClick={() => navigate('/recommendation')}>View Distributed Cashback</button>
+            <button className='go-home' onClick={() => navigate('/RAGRecommendation')}>View Distributed Cashback</button>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import UserDetails from './UserDetails';
 import ThankYouPage from './ThankYouPage';
 import CardList from './CardList';
 import Recommendation1 from './Recommendation1';
+import RAGRecommendation from './RAGRecommendation'
  
 function App() {
   const [route, setRoute] = useState('Landing');
@@ -42,6 +43,9 @@ function App() {
     case 'recommendation':
       pageContent = <Recommendation1 navigateTo={navigateTo} />;
       break;
+      case 'RAGRecommendation':
+      pageContent = <RAGRecommendation navigateTo={navigateTo} />;
+      break;
     case 'ThankYouPage':
       pageContent = <ThankYouPage navigateTo={navigateTo} />;
       break;
@@ -66,6 +70,7 @@ function App() {
         <Route path="/CardList" element={<CardList />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/recommendation" element={<Recommendation1 />} />
+        <Route path="/RAGRecommendation" element={<RAGRecommendation/>}/>
         
       </Routes>
     </Router>

@@ -34,7 +34,7 @@ const Login = ({  }) => {
       const response = await axios.post('http://localhost:8000/login/', formData);
       console.log('login successfull');
       console.log('Response:', response.data);  
-      window.location.href = '/home';
+      navigate('/home')
       localStorage.setItem('userdetails', JSON.stringify(response.data));
       } catch (error) {
       console.error('Error:', error);
