@@ -15,7 +15,8 @@ import Recommendation1 from './Recommendation1';
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
 import Dashboard from './views/dashboard/Dashboard';
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+// const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+import DefaultLayout from './layout/DefaultLayout'
 
 function App() {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')

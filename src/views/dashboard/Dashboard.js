@@ -49,19 +49,29 @@ import avatar3 from '../../assets/images/avatars/3.jpg'
 import avatar4 from '../../assets/images/avatars/4.jpg'
 import avatar5 from '../../assets/images/avatars/5.jpg'
 import avatar6 from '../../assets/images/avatars/6.jpg'
-
+import { useNavigation } from 'react-router-dom';
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 import { arrayJSON } from '../../data'
 
 const Dashboard = () => {
-  const [count,setCount] = useState(false)
-  useEffect(()=>{
-    
-    count && window.location.reload();
-    setCount(true)
-  },[])
+  const hasReloaded = localStorage.getItem('hasReloaded');
+  useEffect(() => {
+   
+    if (!hasReloaded) {
+      console.log("in if condi" ,!hasReloaded)
+      // If the page hasn't been reloaded, reload it
+      localStorage.setItem('hasReloaded', true);
+      window.location.reload();
+    } else {
+      console.log("hell")
+      // If the page has been reloaded already, remove the flag
+      localStorage.removeItem('hasReloaded');
+    }
+  }, [hasReloaded]);
+
+
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
