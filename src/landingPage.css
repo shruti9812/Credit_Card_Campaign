@@ -1,13 +1,15 @@
-.container {
+.Landing-container {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
   }
   
-  .header {
+  .Landing-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #000;
+    color: #fbff0e; /* Yellow */
   }
 
   .welcome-message{
@@ -36,7 +38,7 @@
     max-width: 100%;
   }
   
-  .footer {
+  .Landing-footer {
     margin-top: 20px;
     text-align: center;
   }

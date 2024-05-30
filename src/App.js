@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,Suspense } from 'react';
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -14,6 +14,7 @@ import CardList from './CardList';
 import Recommendation1 from './Recommendation1';
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
+import Dashboard from './views/dashboard/Dashboard';
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 function App() {
@@ -36,8 +37,10 @@ function App() {
 
   return (
     <div className="App">
+      
       <Router>
       <Routes>
+      
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -49,7 +52,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/recommendation" element={<Recommendation1 />} />
         <Route path="/*" name="Home" element={<DefaultLayout />} />
-
+      
       </Routes>
     </Router>
      

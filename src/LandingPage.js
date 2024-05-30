@@ -16,8 +16,8 @@ const LandingPage = ({  }) => {
   },[userdetails])
   return (
  
-    <div className="container">
-      <header className="header">
+    <div className="Landing-container">
+      <header className="Landing-header">
         <div className="top-header">
         <div className="Logo">
           <img src={logo} alt="Bank Logo" className="logo" />
@@ -41,7 +41,7 @@ const LandingPage = ({  }) => {
           <img src={creditCard} alt="Promotional Banner" className="banner-image" />
         </div>
        
-      <footer className="footer">
+      <footer className="Landing-footer">
         <p>&copy; 2024 SilverLine Savings Bank. All rights reserved.</p>
       </footer>
     </div>

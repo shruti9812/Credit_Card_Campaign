@@ -7,7 +7,7 @@ import userIcon from './User.jpg';
 import UserManual from './UserManual.jpg';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom'
 const HomePage = () => {
   const navigate = useNavigate();
   const [showUserDetails, setShowUserDetails] = useState(false);
@@ -15,11 +15,11 @@ const HomePage = () => {
   const [show, setShow] = useState(false);
   const userdetails = JSON.parse(localStorage.getItem('userdetails'));
 
-  useEffect(() => {
-    if (userdetails === null) {
-      navigate('/login');
-    }
-  }, [userdetails]);
+  // useEffect(() => {
+  //   if (userdetails === null) {
+  //     navigate('/login');
+  //   }
+  // }, [userdetails]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,28 +42,28 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
-      <header className="header">
-        <div className="top-header">
+    <div className="Landing-container">
+      <header className="Home-header">
+        <div className="Home-left">
           <div className="Logo">
             <img src={logo} alt="Bank Logo" className="logo" />
           </div>
           <h2>SilverLine Savings Bank</h2>
-          <div className="user-icon-container">
-            <img
-              src={UserManual}
-              alt="User Manual"
-              className="user-Manual"
-              title="User Manual Guide"
-            />
-            <img
-              src={userIcon}
-              alt="User Icon"
-              className="user-icon"
-              title="user details"
-              onClick={handleShow}
-            />
-          </div>
+        </div>
+        <div className="Home-right">
+          <img
+            src={UserManual}
+            alt="User Manual"
+            className="user-Manual"
+            title="User Manual Guide"
+          />
+          <img
+            src={userIcon}
+            alt="User Icon"
+            className="user-icon"
+            title="User Details"
+            onClick={handleShow}
+          />
         </div>
       </header>
 
@@ -84,7 +84,7 @@ const HomePage = () => {
           </h2>
         </div>
         <div className="action-buttons">
-          <button className="go-home" onClick={() => navigate('/login')}>
+          <button className="go-home" onClick={() => navigate('/dashboard')}>
             View Campaign
           </button>
           <button className="go-home" onClick={() => navigate('/Create_Campaign')}>
@@ -96,7 +96,7 @@ const HomePage = () => {
           banking experience.
         </p>
       </main>
-      <footer className="footer">
+      <footer className="Landing-footer">
         <div className="footer-info">
           <p>Contact Us: 123-456-7890</p>
           <p>Email: info@yourbank.com</p>

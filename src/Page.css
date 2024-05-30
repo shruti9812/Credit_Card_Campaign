@@ -1,167 +1,64 @@
-/* HomePage.css */
-
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Prevent scrolling */
-}
-
-.header {
-  background-color: #000;
-  color: #fbff0e; /* Yellow */
-} 
-
-.heading h1 {
-  margin-top: 20px;
-}
-
-.logo {
-  width: 100px; 
-  height: auto;
-}
-
-.user-icon-container {
-  cursor: pointer;
-}
-
-.user-icon {
-  height: 70px;
-  color: yellow;
-  margin-left: 10px;
-}
-
-.user-Manual {
-  height: 70px;
-  padding-left: 550px;
-}
-
-.custom-modal .modal-content {
-  color: black;
-  background-color: white;
-}
-
-.custom-modal-header {
-  color: yellow;
-  background-color:black;
-  border-bottom: none;
+.Home-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.custom-modal-title {
-  padding-left: 15%;
-}
-
-.custom-modal .close {
+  /* padding: 10px; */
+  background-color:black;
   color: yellow;
-  opacity: 1;
 }
 
-.custom-modal .close:hover,
-.custom-modal .close:focus {
-  color: yellow;
-  opacity: 1;
-}
-
-.auth-button {
-  background-color: #fbff0e; /* Yellow */
-  border: 1px;
-  padding: 15px 25px; /* Adjust padding for bigger size */
-  cursor: pointer;
-  font-size: 15px; /* Increase font size */
-}
-
-.action-button + .action-button {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.auth-buttons button:hover {
-  background-color: #ffea7f; /* Lighter Yellow */
-}
-
-.navigation-menu {
+.Home-left {
   display: flex;
-  justify-content: center;
-  align-items: center; /* Vertically align items */
+  align-items: center;
 }
 
-.navigation-menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navigation-menu ul li {
-  display: inline;
+.Logo .logo {
+  height: 70px;
   margin-right: 20px;
+  color:black;
+
 }
 
-.navigation-menu ul li a {
-  color: #fbff0e; /* Yellow */
-  text-decoration: none;
+.Home-right {
+  display: flex;
+  align-items: center;
 }
 
-.navigation-menu ul li a:hover {
-  text-decoration: underline;
+.user-icon-container,
+.user-Manual,
+.user-icon {
+  height: 80px;
+  margin-left: 10px;
+  cursor: pointer;
+  color:black;
 }
 
 .main-content {
-  text-align: center; 
-  padding: auto;
+  padding: 20px;
 }
 
-.title {
-  color: #000;
+.content-container {
+  text-align: center;
 }
 
-.banner-container {
-  width: 100%;
-}
-
-.banner-image {
-  width: 100%;
-  height: auto;
-}
-
-.action-buttons button {
-  margin-right: 10px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #fbff0e; /* Yellow */
-  color: #000;
-  cursor: pointer;
-}
-
-.action-buttons button:hover {
-  background-color: #ffea7f; /* Lighter Yellow */
-}
-
-.featured-services {
-  margin-top: 40px;
-}
-
-.service-item {
-  display: flex;
-  align-items: center;
+.welcome-message {
   margin-bottom: 20px;
 }
 
-.service-item img {
-  width: 80px; /* Adjust size as needed */
-  height: auto;
-  margin-right: 20px;
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.footer {
-  background-color: #000;
-  color: #fbff0e; /* Yellow */
-  padding: 20px;
+.Landing-footer {
   text-align: center;
+  padding: 10px;
+  background-color: black;
+  color: yellow;
+}
+
+.footer-info {
+  margin-bottom: 5px;
 }
