@@ -112,9 +112,9 @@ const HomePage = () => {
       </footer>
 
     <Modal show={show} onHide={handleClose} className="custom-modal">
-        <Modal.Header closeButton className="custom-modal-header">
+        <Modal.Header closeButton className="custom-modal-header" style={{backgroundColor:"black"}} >
           <img src={logo} alt="Bank Logo" className="logo"  height={"100px"} width={"100px"}/>
-          <Modal.Title className="custom-modal-title">User Details</Modal.Title>
+          <Modal.Title className="custom-modal-title" style={{color:"yellow"}}>User Details</Modal.Title>
         </Modal.Header>
         {userdetails !== null && userdetails !== undefined && (
           <Modal.Body>
@@ -125,7 +125,7 @@ const HomePage = () => {
           </Modal.Body>
         )}
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleLogout}>
+          <Button variant="secondary" style={{backgroundColor:"black"}} onClick={handleLogout}>
             Logout
           </Button>
         </Modal.Footer>
