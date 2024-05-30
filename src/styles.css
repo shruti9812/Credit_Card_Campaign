@@ -66,9 +66,10 @@ label {
 /* Input fields */
 input[type="text"],
 input[type="number"],
+input[type="date"],
 select,
 textarea {
-  width: 40%;
+  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -77,7 +78,9 @@ textarea {
 
 /* Textarea */
 textarea {
-  height: 50px; /* Adjust as needed */
+  height: 70px;
+  width: 100%;
+   /* Adjust as needed */
 }
 
 /* Error message */
@@ -110,7 +113,7 @@ textarea {
   filter: brightness(90%);
 }
 
-input[type="text"],
+
 input[type="email"],
 input[type="password"] {
   width: 100%;

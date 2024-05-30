@@ -59,9 +59,13 @@ const Dashboard = () => {
   const [count,setCount] = useState(false)
   useEffect(()=>{
     
-    count && window.location.reload();
-    setCount(true)
+    if(count ===false) {
+      window.location.reload();
+      setCount(true)
+    }
+    
   },[])
+console.log(count)
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
