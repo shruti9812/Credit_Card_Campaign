@@ -12,10 +12,12 @@ import UserDetails from './UserDetails';
 import ThankYouPage from './ThankYouPage';
 import CardList from './CardList';
 import Recommendation1 from './Recommendation1';
+import RAGRecommendation from './RAGRecommendation';
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
 import Dashboard from './views/dashboard/Dashboard';
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+// const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+import DefaultLayout from './layout/DefaultLayout'
 
 function App() {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
@@ -51,6 +53,7 @@ function App() {
         <Route path="/CardList" element={<CardList />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/recommendation" element={<Recommendation1 />} />
+        <Route path="/RAGRecommendation" element={<RAGRecommendation/>}/>
         <Route path="/*" name="Home" element={<DefaultLayout />} />
       
       </Routes>

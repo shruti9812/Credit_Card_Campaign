@@ -10,6 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
+  const hasReloaded = localStorage.getItem('hasReloaded');
+  useEffect(() => {
+    if(hasReloaded === null){
+      localStorage.setItem('hasReloaded', false);
+    
+    }
+  }, []);
   const navigate = useNavigate();
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -107,7 +114,7 @@ const HomePage = () => {
 
     <Modal show={show} onHide={handleClose} className="custom-modal">
         <Modal.Header closeButton className="custom-modal-header">
-          <img src={logo} alt="Bank Logo" className="Logo" />
+          <img src={logo} alt="Bank Logo" className="logo"  height={"100px"} width={"100px"}/>
           <Modal.Title className="custom-modal-title">User Details</Modal.Title>
         </Modal.Header>
         {userdetails !== null && userdetails !== undefined && (

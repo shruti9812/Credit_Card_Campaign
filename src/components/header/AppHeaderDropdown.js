@@ -21,14 +21,15 @@ import {
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-
+import userIcon from './../../assets/brand/User.jpg';
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
 const AppHeaderDropdown = () => {
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
-        <CAvatar src={avatar8} size="md" />
+        {/* <CAvatar src={avatar8} size="md" /> */}
+        <img src={userIcon} alt="Bank Logo" className="logo"  height={"100px"} width={"100px"}/>
       </CDropdownToggle>
       {/* <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-body-secondary fw-semibold mb-2">Account</CDropdownHeader>
