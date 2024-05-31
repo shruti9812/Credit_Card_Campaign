@@ -4,21 +4,26 @@ import './LLMRecommendation.css';
 import { IoArrowBack } from "react-icons/io5";
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
+import { listArray } from './data';
 
 const App = () => {
   const navigate = useNavigate();
   const [responses, setResponses] = useState(["", "", ""]);
+  const [text,setText] = useState("")
   const [selectedTab, setSelectedTab] = useState('recommendation1');
   const [criteria, setCriteria] = useState("Generate a promotional campaign brief for a cashback offer targeting customers of business bank by using the following input details - Campaign Title : Summer Purchase discount, Campaign Budget : 100000 ,Campaign Start Date : 22 May 2024, Campaign End Date : 30 May 2024, Card Type : MasterCard, Transaction Type : Purchase, Not Eligible ,Transaction Type : Loan ,Minimum Over All Transaction Amount : 5000, Minimum Cashback Amount : 100, Maximum Cashback Overall : 1000, Maximum Cashback Per Transaction : 1000 , The offer should guarantee cashback based on monthly spending tiers for the valid customers and provide us the output in the detailed description with campaign name, no of eligible cards, card types, total budget amount, pending amount after providing cashback etc. Note: the above dates mentioned are campaigned dates and not the trancation dates, this cannot be used for querying database");
 
-  const [tabularData, setTabularData] = useState([[], [], []]); // Initialize tabular data as an array with three empty arrays
+  const [tabularData, setTabularData] = useState([]); // Initialize tabular data as an array with three empty arrays
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
+    setText(listArray.common_offer)
+    setTabularData(listArray.user_data)
   };
 
   useEffect(() => {
     callLLMAPI();
+    handleTabClick('recommendation1')
   }, []);
 
   const callLLMAPI = async () => {
@@ -58,7 +63,7 @@ const App = () => {
         </div>
         <div className="Recomm-right">
           <h2>Criteria</h2>
-          <h6>User will get 70% more cashback if transaction get increased by 50%. Maximum Cashback will remain 25000</h6>
+          <h6>{text}</h6>
           <h2>{selectedTab}</h2>
           <div>
             <p>{responses[selectedTab === 'recommendation1' ? 0 : selectedTab === 'recommendation2' ? 1 : 2]}</p>
@@ -76,13 +81,13 @@ const App = () => {
                 </tr>
               </thead>
               <tbody>
-                {tabularData[selectedTab === 'recommendation1' ? 0 : selectedTab === 'recommendation2' ? 1 : 2].map((row, index) => (
+                {tabularData.map((row, index) => (
                   <tr key={index}>
                     <td>{row.CardId}</td>
                     <td>{row.TransactionAmount}</td>
                     <td>{row.Cashback}</td>
                     <td>{row.SuggestedTransactionAmount}</td>
-                    <td>{row.SuggestedCashback}</td>
+                    <td>{row.SuggestedCashbackAmount}</td>
                     <td>{row.MaximumCashbackLimit}</td>
                   </tr>
                 ))}
