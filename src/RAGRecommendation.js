@@ -32,7 +32,7 @@ const App = () => {
       const response = await axios.get('http://127.0.0.1:8000/generate_offer');
       // setTabularData(response.data.tabularData); // Update tabular data state with the received data
       setText(response.common_offer)
-       setTabularData(response.user_data)
+      setTabularData(response.user_data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
