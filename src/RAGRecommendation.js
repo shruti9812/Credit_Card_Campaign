@@ -9,34 +9,30 @@ import { listArray } from './data';
 const App = () => {
   const navigate = useNavigate();
   const [responses, setResponses] = useState(["", "", ""]);
-  const [text,setText] = useState("")
+  const [text, setText] = useState("");
   const [selectedTab, setSelectedTab] = useState('recommendation1');
-  const [criteria, setCriteria] = useState("Generate a promotional campaign brief for a cashback offer targeting customers of business bank by using the following input details - Campaign Title : Summer Purchase discount, Campaign Budget : 100000 ,Campaign Start Date : 22 May 2024, Campaign End Date : 30 May 2024, Card Type : MasterCard, Transaction Type : Purchase, Not Eligible ,Transaction Type : Loan ,Minimum Over All Transaction Amount : 5000, Minimum Cashback Amount : 100, Maximum Cashback Overall : 1000, Maximum Cashback Per Transaction : 1000 , The offer should guarantee cashback based on monthly spending tiers for the valid customers and provide us the output in the detailed description with campaign name, no of eligible cards, card types, total budget amount, pending amount after providing cashback etc. Note: the above dates mentioned are campaigned dates and not the trancation dates, this cannot be used for querying database");
-
+  const [criteria, setCriteria] = useState("");
+  const [budget, setBudget] = useState(""); // New state variable for budget
   const [tabularData, setTabularData] = useState([]); // Initialize tabular data as an array with three empty arrays
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
-    callLLMAPI()
-    // setText(listArray.common_offer)
-    // setTabularData(listArray.user_data)
+    callLLMAPI();
   };
 
   useEffect(() => {
     callLLMAPI();
-    handleTabClick('recommendation1')
   }, []);
 
   const callLLMAPI = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/generate_offer');
-      // setTabularData(response.data.tabularData); // Update tabular data state with the received data
-      setText(response.common_offer)
-      setTabularData(response.user_data)
+      setText(response.common_offer);
+      setTabularData(response.user_data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  };
 
   const handleResubmit = () => {
     setSelectedTab("recommendation1");
@@ -53,13 +49,48 @@ const App = () => {
       </header>
       <div className="Recomm-content">
         <div className="Recomm-left">
+          <div className="Budget-input">
+            <label htmlFor="budget">Campaign Budget:</label>
+            <input
+              type="text"
+              id="budget"
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}
+            />
+            {!budget && <p className="Mandatory-message">Campaign budget is mandatory</p>}
+          </div>
           <div className="Recomm-tabs">
-            <button onClick={() => handleTabClick('recommendation1')} className={selectedTab === 'recommendation1' ? 'selected' : ''}>Cashback Recommendation 1</button>
-            <button onClick={() => handleTabClick('recommendation2')} className={selectedTab === 'recommendation2' ? 'selected' : ''}>Cashback Recommendation 2</button>
-            <button onClick={() => handleTabClick('recommendation3')} className={selectedTab === 'recommendation3' ? 'selected' : ''}>Cashback Recommendation 3</button>
+            <button 
+              onClick={() => handleTabClick('recommendation1')} 
+              className={selectedTab === 'recommendation1' ? 'selected' : ''} 
+              disabled={!budget}
+            >
+              Cashback Recommendation 1
+            </button>
+            <button 
+              onClick={() => handleTabClick('recommendation2')} 
+              className={selectedTab === 'recommendation2' ? 'selected' : ''} 
+              disabled={!budget}
+            >
+              Cashback Recommendation 2
+            </button>
+            <button 
+              onClick={() => handleTabClick('recommendation3')} 
+              className={selectedTab === 'recommendation3' ? 'selected' : ''} 
+              disabled={!budget}
+            >
+              Cashback Recommendation 3
+            </button>
           </div>
           <p>If you don't find relevant recommendation, please write your prompt below:</p>
-          <textarea name="postContent" className='Recomm-input' value={criteria} onChange={(e) => setCriteria(e.target.value)} rows={4} cols={40} />
+          <textarea 
+            name="postContent" 
+            className='Recomm-input' 
+            value={criteria} 
+            onChange={(e) => setCriteria(e.target.value)} 
+            rows={4} 
+            cols={40} 
+          />
           <button className="submit-button" onClick={handleResubmit}>Resubmit</button>
         </div>
         <div className="Recomm-right">
@@ -67,7 +98,7 @@ const App = () => {
           <h6>{text}</h6>
           <h2>{selectedTab}</h2>
           <div>
-            <p>{responses[selectedTab === 'recommendation1' ? 0 : selectedTab === 'recommendation2' ? 1 : 2]}</p>
+            <p className="bold">{responses[selectedTab === 'recommendation1' ? 0 : selectedTab === 'recommendation2' ? 1 : 2]}</p>
           </div>
           <div>
             <Table striped bordered hover>

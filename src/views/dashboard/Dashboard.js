@@ -17,22 +17,24 @@ import axios from 'axios';
 const Dashboard = () => {
   const hasReloaded = localStorage.getItem('hasReloaded');
   const [data,setData] = useState([])
+  console.log(hasReloaded);
   useEffect(() => {
   
-    if (!hasReloaded) {
-      // If the page hasn't been reloaded, reload it
-      localStorage.setItem('hasReloaded', true);
-      window.location.reload();
-    } else {
-      // If the page has been reloaded already, remove the flag
-      localStorage.removeItem('hasReloaded');
-    }
+    // if (!hasReloaded) {
+    //   // If the page hasn't been reloaded, reload it
+    //   localStorage.setItem('hasReloaded', true);
+    //   window.location.reload();
+    // } else {
+    //   // If the page has been reloaded already, remove the flag
+    //   localStorage.removeItem('hasReloaded');
+    // }
     callTheApi()
-  }, [hasReloaded]);
+  }, []);
 
 const callTheApi  =async ()=>{
 let response = await axios.get('http://localhost:8000/items'); 
-response !== null && response!== undefined && response.length>0 && setData([...response])
+console.log(response);
+response !== null && response!== undefined && response.data.length>0 && setData([...response.data])
 }
 
   return (
