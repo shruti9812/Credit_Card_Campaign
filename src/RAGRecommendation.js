@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Table } from 'react-bootstrap';
 
 const first = {
-  common_offer:"Total Budget for the campaign is 30000 which is equally divided among all the customer. The cashback ranges in between 1%-2% of the transaction amount. The suggested cashback can gets increased by 10%-15% of the previous cashback if the transaction amount also gets increased by 10%-15%. The customer who have there CIBIL score in between 800-850 and have MasterCard or Visa cards are eligible for the cashback.",
+  common_offer:"The Customer will get guaranteed cashback if the customer increases it's transaction amount by 10%-15%.The cashback ranges between 1%-2% of the transaction amount. The minimum overall spend of the customer should be at least 55%-65% of the total card limit. Maximum cashback to be earned Rs.1000 per card. The eligible cards are Mastercard platinum , Visa gold.",
   user_data:[
     {
         "card_id": 1144673,
@@ -251,7 +251,7 @@ const first = {
   ]
 }
 const second = {
-  common_offer:"Total Budget for the campaign is 20000 which is equally divided among all the customer. The cashback ranges in between 0.5%-1.5% of the transaction amount. The suggested cashback can gets increased by 8%-12% of the previous cashback if the transaction amount also gets increased by 20%-25%. The customer who have there CIBIL score in between 750-800 and have Rupay or Visa cards are eligible for the cashback.",
+  common_offer:"The budget of the campaign is Rs.20000. The customer will get additional 2.5% cashback if he spends on fuel. The first time card user will get assured Rs.500 cashback and Rs.250 gift voucher. The minimum spend to avail the cashback is 70% of the card limit and maximum cashback is Rs.666. This offer is only applicable for Rupay BVCL and Visa IOHL card.",
   user_data:[
     {
         "card_id": 1144673,
@@ -496,7 +496,7 @@ const second = {
   ]
 }
 const third = {
-  common_offer:"Total Budget for the campaign is 15000 which is equally divided among all the customer. The cashback ranges in between 1.5%-2% of the transaction amount. The suggested cashback can gets increased by 12%-15% of the previous cashback if the transaction amount also gets increased by 20%-25%. The customer who have there CIBIL score in between 850-900 and should have MasterCard card are eligible for the cashback.",
+  common_offer:"Guaranteed cashback up to Rs.500 with minimum spend is Rs.7000. The customer will get additional Rs.150 coupon of famous merchants like Lightkart, Cuba. The spend should be in digital method. Minimum cashback eligibility criteria is Rs.6000. This cashback is for both customer and staff.",
   user_data:[
     {
         "card_id": 1144673,
