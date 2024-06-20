@@ -251,7 +251,7 @@ const first = {
   ]
 }
 const second = {
-  common_offer:"The budget of the campaign is Rs.20000. The customer will get additional 2.5% cashback if he spends on fuel. The first time card user will get assured Rs.500 cashback and Rs.250 gift voucher. The minimum spend to avail the cashback is 70% of the card limit and maximum cashback is Rs.666. This offer is only applicable for Rupay BVCL and Visa IOHL card.",
+  common_offer:"Total Budget for the campaign is 30000 which is equally divided among all the customer. The cashback ranges in between 1%-2% of the transaction amount. The suggested cashback can gets increased by 10%-15% of the previous cashback if the transaction amount also gets increased by 10%-15%. The customer who have there CIBIL score in between 800-850 and have MasterCard or Visa cards are eligible for the cashback.",
   user_data:[
     {
         "card_id": 1144673,
@@ -496,7 +496,7 @@ const second = {
   ]
 }
 const third = {
-  common_offer:"Guaranteed cashback up to Rs.500 with minimum spend is Rs.7000. The customer will get additional Rs.150 coupon of famous merchants like Lightkart, Cuba. The spend should be in digital method. Minimum cashback eligibility criteria is Rs.6000. This cashback is for both customer and staff.",
+  common_offer:"The campaign has a total budget of 20,000, which will be equally allocated to all participants. Cashback percentages range from 0.5% to 1.5% of the transaction amount. If the transaction amount increases by 20% to 25%, the proposed cashback may rise by 8% to 12% from the initial cashback. Eligibility for this offer is limited to customers with CIBIL scores between 750 and 800, using Rupay or Visa cards.",
   user_data:[
     {
         "card_id": 1144673,
